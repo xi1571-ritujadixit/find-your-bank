@@ -29,7 +29,7 @@ const useBanksState = () => {
                 });
             })();
         }
-    }, [dispatch]);
+    }, [banksByPage, dispatch]);
 
     return {
         banksByPage,
