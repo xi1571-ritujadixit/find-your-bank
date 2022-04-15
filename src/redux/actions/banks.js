@@ -121,7 +121,7 @@ export const fetchBanksByFilter = ({
                     initialRow,
                     initialRow + rowsPerPage
                 ),
-                totalBanks: filteredBanks.length,
+                totalBanks: filteredBanks?.length,
             },
         });
     };
@@ -140,7 +140,7 @@ export const toggleFavorites = (selectedBank) => {
         } else {
             return dispatch({
                 type: "ADD_TO_FAVORITES",
-                payload: selectedBank,
+                payload: { ...selectedBank, isFavorite: true },
             });
         }
     };

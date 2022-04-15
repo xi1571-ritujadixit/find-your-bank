@@ -16,17 +16,19 @@ const useBanksState = () => {
     } = useSelector((state) => state.banks);
 
     useEffect(() => {
-        (async () => {
-            dispatch({
-                type: "SET_LOADING",
-                payload: true,
-            });
-            await dispatch(fetchAllBanks());
-            dispatch({
-                type: "SET_LOADING",
-                payload: false,
-            });
-        })();
+        if (!banksByPage) {
+            (async () => {
+                dispatch({
+                    type: "SET_LOADING",
+                    payload: true,
+                });
+                await dispatch(fetchAllBanks());
+                dispatch({
+                    type: "SET_LOADING",
+                    payload: false,
+                });
+            })();
+        }
     }, [dispatch]);
 
     return {

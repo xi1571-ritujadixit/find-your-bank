@@ -1,6 +1,7 @@
 import { Col, Form, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { fetchBanksByFilter } from "../redux/actions/banks";
+import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
 
 const Pagination = ({
     city,
@@ -63,10 +64,10 @@ const Pagination = ({
         <Row>
             <Col>
                 <Row className="align-items-center">
-                    <Col className="text-end" xs={9}>
+                    <Col className="text-start" xs={3}>
                         Rows per page:{" "}
                     </Col>
-                    <Col xs={3}>
+                    <Col xs={2}>
                         <Form.Control
                             type="number"
                             onChange={handleRowsPerPage}
@@ -74,21 +75,26 @@ const Pagination = ({
                     </Col>
                 </Row>
             </Col>
-            <Col className="pt-2 pb-2">
-                <button onClick={handlePrevious} disabled={initialRow === 0}>
-                    Previous
-                </button>
-                {initialRow + 1}-
+            <Col className="pt-2 pb-2 text-end d-flex justify-content-end align-items-center">
+                {initialRow !== 0 && (
+                    <BsArrowLeftSquare
+                        onClick={handlePrevious}
+                        className="m-2"
+                        role="button"
+                    />
+                )}
+                {initialRow + 1} -{" "}
                 {initialRow + rowsPerPage > totalBanks
                     ? totalBanks
                     : initialRow + rowsPerPage}{" "}
                 of {totalBanks}
-                <button
-                    onClick={handelNext}
-                    disabled={initialRow + rowsPerPage >= totalBanks}
-                >
-                    Next
-                </button>
+                {initialRow + rowsPerPage <= totalBanks && (
+                    <BsArrowRightSquare
+                        onClick={handelNext}
+                        className="m-2"
+                        role="button"
+                    />
+                )}
             </Col>
         </Row>
     );

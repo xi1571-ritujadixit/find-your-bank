@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toggleFavorites } from "../redux/actions/banks";
 import Loader from "./Loader";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
 const BanksTable = ({ banksByPage, isLoading }) => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const BanksTable = ({ banksByPage, isLoading }) => {
         <Loader />
     ) : banksByPage?.length ? (
         <Row>
-            <Table striped bordered hover size="xs">
+            <Table striped bordered hover className="align-middle">
                 <thead>
                     <tr>
                         <th></th>
@@ -35,11 +36,19 @@ const BanksTable = ({ banksByPage, isLoading }) => {
                 <tbody>
                     {banksByPage?.map((bank) => {
                         return (
-                            <tr key={bank.ifsc}>
+                            <tr key={bank.ifsc} role="button">
                                 <td>
-                                    <button onClick={() => handleFav(bank)}>
-                                        fav
-                                    </button>
+                                    {bank.isFavorite ? (
+                                        <MdFavorite
+                                            onClick={() => handleFav(bank)}
+                                            className="m-2"
+                                        />
+                                    ) : (
+                                        <MdFavoriteBorder
+                                            onClick={() => handleFav(bank)}
+                                            className="m-2"
+                                        />
+                                    )}
                                 </td>
                                 <td onClick={() => handleRowClick(bank.ifsc)}>
                                     {bank.bank_name}

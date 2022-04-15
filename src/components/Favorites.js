@@ -9,11 +9,17 @@ const Favorites = () => {
     return (
         <div className="App">
             <Container fluid>
-                <Row>
-                    <Col xs={3}>
+                <Row className="mt-3 mx-5">
+                    <h2 className="text-start">Find Your Bank</h2>
+                </Row>
+                <Row className="justify-content-center">
+                    <Col xs={3} className="pt-3 p-3">
                         <SideNav />
                     </Col>
-                    <Col xs={9}>
+                    <Col xs={8} className="mt-3 mb-3">
+                        <Row className="text-start">
+                            <h3>Favorites</h3>
+                        </Row>
                         <BanksTable
                             banksByPage={favorites}
                             isLoading={isLoading}

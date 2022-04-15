@@ -60,6 +60,11 @@ const banks = (state = initialState, action) => {
             return {
                 ...state,
                 favorites: [...state.favorites, payload],
+                banksByPage: state.banksByPage.map((bank) =>
+                    bank.ifsc === payload.ifsc
+                        ? { ...bank, isFavorite: true }
+                        : bank
+                ),
             };
         case "REMOVE_FROM_FAVORITES":
             return {

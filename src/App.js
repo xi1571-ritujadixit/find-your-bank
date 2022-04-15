@@ -22,21 +22,20 @@ const App = () => {
     return (
         <div className="App">
             <Container fluid>
-                <Row>
-                    <Col xs={3}>
+                <Row className="mt-3 mx-5">
+                    <h2 className="text-start">Find Your Bank</h2>
+                </Row>
+                <Row className="justify-content-center">
+                    <Col xs={3} className="pt-3 p-3">
                         <SideNav />
                     </Col>
-                    <Col xs={9} className="mt-3 mb-3">
+                    <Col xs={8} className="mt-3 mb-3">
                         <Header
                             city={city}
                             filter={filter}
                             searchText={searchText}
                             rowsPerPage={rowsPerPage}
                             initialRow={initialRow}
-                        />
-                        <BanksTable
-                            banksByPage={banksByPage}
-                            isLoading={isLoading}
                         />
                         <Pagination
                             city={city}
@@ -45,6 +44,10 @@ const App = () => {
                             rowsPerPage={rowsPerPage}
                             initialRow={initialRow}
                             totalBanks={totalBanks}
+                        />
+                        <BanksTable
+                            banksByPage={banksByPage}
+                            isLoading={isLoading}
                         />
                     </Col>
                 </Row>

@@ -55,10 +55,10 @@ const Header = ({ city, filter, searchText, rowsPerPage, initialRow }) => {
 
     return (
         <Row className="mb-3">
-            <Col xs={6} className="text-start">
-                All Banks
+            <Col xs={2} className="text-start">
+                <h3>All Banks</h3>
             </Col>
-            <Col xs={2}>
+            <Col xs={3}>
                 <Form.Select onChange={handleCityChange} defaultValue={city}>
                     <option>Select City</option>
                     <option value="BANGALORE">Bangalore</option>
@@ -68,7 +68,7 @@ const Header = ({ city, filter, searchText, rowsPerPage, initialRow }) => {
                     <option value="MUMBAI">Mumbai</option>
                 </Form.Select>
             </Col>
-            <Col xs={2}>
+            <Col xs={3}>
                 <Form.Select
                     onChange={handleFilterChange}
                     defaultValue={filter}
@@ -79,7 +79,7 @@ const Header = ({ city, filter, searchText, rowsPerPage, initialRow }) => {
                     <option value="branch">Branch</option>
                 </Form.Select>
             </Col>
-            <Col xs={2}>
+            <Col xs={4}>
                 <Form.Control
                     type="text"
                     placeholder="search"
